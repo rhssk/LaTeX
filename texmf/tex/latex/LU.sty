@@ -1,0 +1,62 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{LU}[2017/12/09 Format document according to the University of Latvia guidelines]
+% For complete specifications see:
+% https://www.lu.lv/fileadmin/user_upload/lu_portal/fakultates/vff/studijas/metodiskie_noradijumi_2009.pdf
+
+% ------------------------------------------------------------------- %
+\RequirePackage[left=30mm,top=20mm,right=20mm,bottom=20mm]{geometry}
+\RequirePackage{setspace}
+\onehalfspacing{}
+% ------------------------------------------------------------------- %
+% https://github.com/andreyv/fixlatvian by Andrey Vihrov
+\RequirePackage{fixlatvian}
+% ------------------------------------------------------------------- %
+\RequirePackage{caption}
+\captionsetup{
+    font=small,
+    labelfont=it,
+    textfont=bf
+}
+\DeclareCaptionFormat{label_newline_center_text}{#1#2\\\centering#3}
+\captionsetup[table]{
+    format=label_newline_center_text,
+    labelsep=none,
+    singlelinecheck=false,
+    justification=raggedleft
+}
+% ------------------------------------------------------------------- %
+\RequirePackage{tocloft}
+% Dotted lines between section names and page numbers
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% Uppercase and centered title
+\renewcommand{\cfttoctitlefont}{\hfill\Large\MakeUppercase}
+\renewcommand{\cftaftertoctitle}{\hfill\hfill}
+% Remove default bold for listof* titles
+\renewcommand{\cftloftitlefont}{\Large} %FIXME: not sure what the ToC title size:LoT title size ratio is supposed to be
+\renewcommand{\cftlottitlefont}{\Large}
+% Add dots at the end of every subsub/sub/section
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+\renewcommand{\cftsubsubsecaftersnum}{.}
+\renewcommand{\cftfigaftersnum}{.}
+\renewcommand{\cfttabaftersnum}{.}
+% Don't use bold text
+\renewcommand{\cftsecfont}{} \renewcommand{\cftsecpagefont}{}
+\renewcommand{\cftsubsecfont}{} \renewcommand{\cftsubsecpagefont}{}
+\renewcommand{\cftsubsubsecfont}{} \renewcommand{\cftsubsubsecpagefont}{}
+\renewcommand{\cftfigfont}{} \renewcommand{\cftfigpagefont}{}
+\renewcommand{\cfttabfont}{} \renewcommand{\cfttabpagefont}{}
+% ------------------------------------------------------------------- %
+\RequirePackage{csquotes}
+\RequirePackage[
+backend=biber,
+language=latvian, % Currently falls back to polyglossia with errors, biblatex translation is in progress
+style=ieee,
+sorting=none,
+doi=false,
+isbn=false,
+url=true,
+urldate=long
+]{biblatex}
+
+\endinput
