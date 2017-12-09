@@ -1,0 +1,70 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{rhs_tikz}[2017/12/09 Tikz styles. Extracted from TikZit(https://github.com/tikzit/tikzit)]
+
+\RequirePackage{environ}
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+    \def\tikz@width{#1}%
+    \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+        \BODY
+    \end{lrbox}%
+    \pgfmathparse{#1/\wd\measure@tikzpicture}%
+    \edef\tikzscale{\pgfmathresult}%
+    \BODY
+}
+
+\RequirePackage[svgnames]{xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{external}
+\tikzexternalize
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shapes.geometric}
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfsetlayers{edgelayer,nodelayer,main}
+
+\tikzstyle{none}=[
+inner sep=10pt,
+text width=20mm
+]
+\tikzstyle{White-Circle}=[
+circle,
+fill=White,
+draw=Black,
+inner sep=0pt,
+align=center,
+text width=20mm,
+thick
+]
+\tikzstyle{White-Rectangle}=[
+rectangle,
+fill=White,
+draw=Black
+]
+
+\tikzstyle{simple}=[
+-,
+draw=Black,
+line width=1.500
+]
+\tikzstyle{arrow}=[
+-,
+draw=Black,
+postaction={decorate},
+decoration={markings,mark=at position .5 with {\arrow{>}}},
+line width=1.500
+]
+\tikzstyle{tick}=[
+-,
+draw=Black,
+postaction={decorate},
+decoration={markings,mark=at position .5 with {\draw (0,-0.1) -- (0,0.1);}},
+line width=1.500
+]
+\tikzstyle{arrow-end-1}=[-latex,draw=Black,line width=1.500]
+\tikzstyle{arrow-end-2}=[->,draw=Black,line width=1.500]
+\tikzstyle{arrow-both-1}=[<->,draw=Black,line width=1.500]
+\tikzstyle{arrow-both-2}=[latex-latex,draw=Black,line width=1.500]
+
+\endinput
