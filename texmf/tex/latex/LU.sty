@@ -7,6 +7,7 @@
 \RequirePackage[left=30mm,top=20mm,right=20mm,bottom=20mm]{geometry}
 \RequirePackage{setspace}
 \onehalfspacing{}
+% \singlespacing{}
 % ------------------------------------------------------------------- %
 % https://github.com/andreyv/fixlatvian by Andrey Vihrov
 \RequirePackage{fixlatvian}
@@ -23,6 +24,9 @@
     labelsep=none,
     singlelinecheck=false,
     justification=raggedleft
+}
+\captionsetup[figure]{
+    format=hang,
 }
 % ------------------------------------------------------------------- %
 \RequirePackage{tocloft}
@@ -46,6 +50,8 @@
 \renewcommand{\cftsubsubsecfont}{} \renewcommand{\cftsubsubsecpagefont}{}
 \renewcommand{\cftfigfont}{} \renewcommand{\cftfigpagefont}{}
 \renewcommand{\cfttabfont}{} \renewcommand{\cfttabpagefont}{}
+% Equal vertical space between all ToC items
+\setlength{\cftbeforesecskip}{0pt}
 % ------------------------------------------------------------------- %
 \RequirePackage{csquotes}
 \RequirePackage[
@@ -53,8 +59,6 @@ backend=biber,
 language=latvian, % Currently falls back to polyglossia with errors, biblatex translation is in progress
 style=ieee,
 sorting=none,
-doi=false,
-isbn=false,
 url=true,
 urldate=long
 ]{biblatex}
