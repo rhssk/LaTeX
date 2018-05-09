@@ -1,34 +1,32 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{LU}[2017/12/09 Format document according to the University of Latvia guidelines]
-% For complete specifications see:
+\ProvidesPackage{LU}[2018/03/03 Document style for University of Latvia academic works]
+% More or less based on requirements from:
 % https://www.lu.lv/fileadmin/user_upload/lu_portal/fakultates/vff/studijas/metodiskie_noradijumi_2009.pdf
 
-% ------------------------------------------------------------------- %
+% page geometry and line spacing {{{
 \RequirePackage[left=30mm,top=20mm,right=20mm,bottom=20mm]{geometry}
 \RequirePackage{setspace}
 \onehalfspacing{}
-% \singlespacing{}
-% ------------------------------------------------------------------- %
-% https://github.com/andreyv/fixlatvian by Andrey Vihrov
-\RequirePackage{fixlatvian}
-% ------------------------------------------------------------------- %
+% }}}
+% caption {{{
 \RequirePackage{caption}
 \captionsetup{
-    font=small,
-    labelfont=it,
-    textfont=bf
+	font=small,
+	labelfont=it,
+	textfont=bf
 }
 \DeclareCaptionFormat{label_newline_center_text}{#1#2\\\centering#3}
 \captionsetup[table]{
-    format=label_newline_center_text,
-    labelsep=none,
-    singlelinecheck=false,
-    justification=raggedleft
+	format=label_newline_center_text,
+	labelsep=none,
+	singlelinecheck=false,
+	justification=raggedleft
 }
 \captionsetup[figure]{
-    format=hang,
+	format=hang,
 }
-% ------------------------------------------------------------------- %
+% }}}
+% tocloft {{{
 \RequirePackage{tocloft}
 % Dotted lines between section names and page numbers
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
@@ -52,15 +50,24 @@
 \renewcommand{\cfttabfont}{} \renewcommand{\cfttabpagefont}{}
 % Equal vertical space between all ToC items
 \setlength{\cftbeforesecskip}{0pt}
-% ------------------------------------------------------------------- %
-\RequirePackage{csquotes}
+% }}}
+% csquotes {{{
+\RequirePackage[autostyle=true]{csquotes}
+% }}}
+% biblatex {{{
 \RequirePackage[
 backend=biber,
-language=latvian, % Currently falls back to polyglossia with errors, biblatex translation is in progress
-style=ieee,
-sorting=none,
-url=true,
-urldate=long
+style=ieee, % Can be acquired from https://github.com/josephwright/biblatex-ieee
+language=latvian
 ]{biblatex}
 
+\DefineBibliographyStrings{latvian}{
+	url = [Tiešsaiste]\adddot\addspace Pieejams ,
+}
+
+% Override \uspunctuation set by biblatex-ieee
+\stdpunctuation{}
+% }}}
 \endinput
+
+% vim:foldmethod=marker:foldlevel=0

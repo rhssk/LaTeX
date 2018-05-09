@@ -2,6 +2,7 @@
 \ProvidesPackage{rhs_tikz}[2017/12/09 Tikz styles. Extracted from TikZit(https://github.com/tikzit/tikzit)]
 
 \RequirePackage{environ}
+\makeatletter
 \newsavebox{\measure@tikzpicture}
 \NewEnviron{scaletikzpicturetowidth}[1]{%
     \def\tikz@width{#1}%
@@ -12,9 +13,19 @@
     \edef\tikzscale{\pgfmathresult}%
     \BODY
 }
+\makeatother
 
-\RequirePackage[svgnames]{xcolor}
+% \PassOptionsToPackage{svgnames}{xcolor}
+\RequirePackage{xcolor}
 \RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\usetikzlibrary{matrix,positioning,external}
+\usepgfplotslibrary{external}
+\tikzexternalize[
+prefix=build/,
+up to date check=diff
+]
+
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{shapes.geometric}
 
@@ -22,66 +33,29 @@
 \pgfdeclarelayer{nodelayer}
 \pgfsetlayers{edgelayer,nodelayer,main}
 
-% -------------  NODES  ------------- %
-\tikzstyle{none}=[
-inner sep=0pt
-]
-\tikzstyle{White-Circle}=[
-circle,
-fill=White,
-draw=Black,
-font=\bf,
-align=center,
-text width=16mm,
-% minimum width=2em,
-inner sep=0,
-thick
-]
-\tikzstyle{White-Rectangle}=[
-rectangle,
-fill=White,
-draw=Black
-]
+\tikzstyle{none}=[inner sep=0pt]
 
-% -------------  EDGES  ------------- %
-\tikzstyle{simple}=[
--,
-draw=Black,
-line width=1.00
+\tikzstyle{white_circle}=[circle,fill=white,draw=black,
+% text width=12mm,
+% align=center,
+minimum width=2.5em,
+inner sep=0,
 ]
-\tikzstyle{arrow}=[
--,
-draw=Black,
-postaction={decorate},
-decoration={markings,mark=at position .5 with {\arrow{>}}},
-line width=0.7500
-]
-\tikzstyle{tick}=[
--,
-draw=Black,
-postaction={decorate},
-decoration={markings,mark=at position .5 with {\draw (0,-0.1) -- (0,0.1);}},
-line width=0.7500
-]
-\tikzstyle{arrow-end-1}=[
--latex,
-draw=Black,
-line width=0.7500
-]
-\tikzstyle{arrow-end-2}=[
-->,
-draw=Black,
-line width=0.7500
-]
-\tikzstyle{arrow-both-1}=[
-<->,
-draw=Black,
-line width=0.7500
-]
-\tikzstyle{arrow-both-2}=[
-latex-latex,
-draw=Black,
-line width=0.7500
-]
+\tikzstyle{white_rectangle}=[rectangle,fill=white,draw=black]
+\tikzstyle{red_circle}=[circle,fill=white,draw=red]
+\tikzstyle{green_filled_circle}=[circle,fill=green,draw=black]
+\tikzstyle{red_filled_circle}=[circle,fill=red,draw=black]
+\tikzstyle{green_circle}=[circle,fill=white,draw=green]
+
+\tikzstyle{simple}=[-,draw=black,line width=1.500]
+\tikzstyle{arrow}=[-,draw=black,postaction={decorate},decoration={markings,mark=at position .5 with {\arrow{>}}},line width=1.500]
+\tikzstyle{tick}=[-,draw=black,postaction={decorate},decoration={markings,mark=at position .5 with {\draw (0,-0.1) -- (0,0.1);}},line width=1.500]
+\tikzstyle{arrow-end-1}=[-latex,draw=black,line width=1.500]
+\tikzstyle{arrow-end-2}=[->,draw=black,line width=1.500]
+\tikzstyle{arrow-both-1}=[<->,draw=black,line width=1.500]
+\tikzstyle{arrow-both-2}=[latex-latex,draw=black,line width=1.500]
+\tikzstyle{none}=[-,draw=black]
+% \tikzstyle{red}=[-,draw=red,line width=1.250]
+% \tikzstyle{blue}=[-,draw=Blue,line width=1.250]
 
 \endinput

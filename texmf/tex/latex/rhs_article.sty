@@ -1,0 +1,78 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{rhs_article}[2018/03/03 Packages and settings for a LaTeX article]
+
+% Language and font
+\RequirePackage{fontspec}
+\RequirePackage{polyglossia}
+
+% Math environments etc.
+\RequirePackage{amsmath}
+% Additional math symbols
+\RequirePackage{amssymb}
+
+% Graphics and default image directory
+\RequirePackage{graphicx}
+
+% Floating elements ([H])
+\RequirePackage{float}
+
+% Hyperlinks
+\RequirePackage{hyperref}
+
+% Split content in multiple columns
+\RequirePackage{multicol}
+
+% Draw plots (requires tikz package)
+\RequirePackage{pgfplots}
+
+% Syntax highlighting for included code fragments
+\RequirePackage[outputdir=build]{minted}
+
+\RequirePackage{listings}
+
+% Glossary
+\RequirePackage[nonumberlist, toc]{glossaries}
+% \setlength\LTleft{0pt}
+\makeglossaries
+% \setglossarystyle{long}
+\renewcommand{\glsnamefont}[1]{\textbf{#1} ---}
+
+% Appendices
+\RequirePackage[titletoc]{appendix}
+\makeatletter
+\newcommand\appendix@section[1]{%
+    \refstepcounter{section}%
+    \orig@section*{\@arabic\c@section.~pielikums. #1}%
+    \addcontentsline{toc}{section}{\@arabic\c@section.~pielikums. #1}%
+}
+\let\orig@section\section
+\g@addto@macro\appendix{\let\section\appendix@section}
+\makeatother
+
+\makeatletter
+\newcommand\appendix@subsection[1]{%
+    \refstepcounter{subsection}%
+    \orig@subsection*{\@arabic\c@section.\@arabic\c@subsection. #1}%
+    \addcontentsline{toc}{subsection}{\@arabic\c@section.\@arabic\c@subsection. #1}%
+}
+\let\orig@subsection\subsection
+\g@addto@macro\appendix{\let\subsection\appendix@subsection}
+\makeatother
+
+\makeatletter
+\newcommand\appendix@subsubsection[1]{%
+    \refstepcounter{subsubsection}%
+    \orig@subsubsection*{\@arabic\c@section.\@arabic\c@subsection.\@arabic\c@subsubsection. #1}%
+    \addcontentsline{toc}{subsubsection}{\@arabic\c@section.\@arabic\c@subsection.\@arabic\c@subsubsection. #1}%
+}
+\let\orig@subsubsection\subsubsection
+\g@addto@macro\appendix{\let\subsubsection\appendix@subsubsection}
+\makeatother
+
+% Prepend section/subsection number to tables and figures
+\numberwithin{table}{section}
+\numberwithin{table}{subsection}
+\numberwithin{figure}{section}
+\numberwithin{figure}{subsection}
+
+\endinput
