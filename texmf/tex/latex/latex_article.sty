@@ -1,5 +1,26 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{rhs_tikz}[2017/12/09 Tikz styles. Extracted from TikZit(https://github.com/tikzit/tikzit)]
+\ProvidesPackage{rhs_article}[2018/03/03 Packages and settings for a LaTeX article]
+
+% Math environments etc.
+\RequirePackage{amsmath}
+% Additional math symbols
+\RequirePackage{amssymb}
+% Graphics and default image directory
+\RequirePackage{graphicx}
+% Floating elements ([H])
+\RequirePackage{float}
+% Hyperlinks
+\RequirePackage{hyperref}
+% Split content in multiple columns
+\RequirePackage{multicol}
+% Draw plots (requires tikz package)
+\RequirePackage{pgfplots}
+% Syntax highlighting for code snippets
+\RequirePackage[outputdir=build]{minted}
+\RequirePackage{listings}
+
+
+% Tikz {{{
 
 \RequirePackage{environ}
 \makeatletter
@@ -22,7 +43,7 @@
 \usetikzlibrary{matrix,positioning,external}
 \usepgfplotslibrary{external}
 \tikzexternalize[
-prefix=build/,
+prefix=build/, % tikz will expect an existing 'build' folder in your build folder (./build/build)
 up to date check=diff
 ]
 
@@ -48,7 +69,7 @@ inner sep=0,
 \tikzstyle{green_circle}=[circle,fill=white,draw=green]
 
 \tikzstyle{simple}=[-,draw=black,line width=1.500]
-\tikzstyle{arrow}=[-,draw=black,postaction={decorate},decoration={markings,mark=at position .5 with {\arrow{>}}},line width=1.500]
+\tikzstyle{arrow}=[-,draw=black,postaction={decorate},decoration={markings,mark=at position .5 with {\arrow{>}} },line width=1.500]
 \tikzstyle{tick}=[-,draw=black,postaction={decorate},decoration={markings,mark=at position .5 with {\draw (0,-0.1) -- (0,0.1);}},line width=1.500]
 \tikzstyle{arrow-end-1}=[-latex,draw=black,line width=1.500]
 \tikzstyle{arrow-end-2}=[->,draw=black,line width=1.500]
@@ -58,4 +79,7 @@ inner sep=0,
 % \tikzstyle{red}=[-,draw=red,line width=1.250]
 % \tikzstyle{blue}=[-,draw=Blue,line width=1.250]
 
+% }}}
+
 \endinput
+% vim:foldmethod=marker:foldlevel=0
