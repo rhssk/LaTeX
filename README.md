@@ -6,8 +6,7 @@ language and English as the secondary.
 * Properly configured XeLaTeX environment. On Arch Linux `texlive-core`, `texlive-bin` and `biber` should be sufficient.
   Haven't tested it but `texlive-latexextra` and `texlive-bibtexextra` might be required as well.
 * [fixlatvian](https://github.com/andreyv/fixlatvian) package by Andrey Vihrov. Provides punctuation rules for sections
-  etc. This is already included in this repo(with slight text changes) but you should check the original repo
-  for updates, bug reports, feature requests etc.
+  etc.
 * [biblatex-ieee](https://github.com/josephwright/biblatex-ieee) package.
 
 ## Installation
