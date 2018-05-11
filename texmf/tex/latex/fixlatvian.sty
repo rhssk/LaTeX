@@ -26,8 +26,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \RequirePackage{svn-prov}
 \ProvidesPackageSVN
-  {$Id$}
-  [v1a+r\Rev Improved Latvian support]
+{$Id$}
+[v1a+r\Rev Improved Latvian support]
 \DefineFileInfoSVN\relax
 \RequirePackage{polyglossia}
 \RequirePackage{caption}
@@ -43,177 +43,177 @@
 \ExecuteOptions{slanteq}
 \ProcessOptions\relax
 \ifFL@opt@slanteq
-  \RequirePackage{amssymb}
+    \RequirePackage{amssymb}
 \fi
 \@ifundefined{latvian@loaded}{\setdefaultlanguage{latvian}}{}
 \newcommand{\FL@info}[1]{\PackageInfo{fixlatvian}{#1}}
 \newcommand{\FL@warn}[1]{\PackageWarningNoLine{fixlatvian}{#1}}
 \newcommand{\FL@patch}{\begingroup\@makeother{\#}\FL@patch@aux}
 \newcommand{\FL@patch@aux}[3]{\endgroup\patchcmd{#1}{#2}{#3}{}{%
-  \FL@warn{Could not change the definition of the \protect #1 command}}}
+\FL@warn{Could not change the definition of the \protect #1 command}}}
 \newcommand{\FL@checkbefore}[1]{%
-  \expandafter\newif\csname ifFL@#1@before\endcsname
-  \@ifpackageloaded{#1}{\csname FL@#1@beforetrue\endcsname}{}%
-  \AtBeginDocument{%
-    \@ifpackageloaded{#1}{%
-      \csname ifFL@#1@before\endcsname\else
-        \FL@warn{This package should be loaded after #1}%
-      \fi
+    \expandafter\newif\csname ifFL@#1@before\endcsname
+    \@ifpackageloaded{#1}{\csname FL@#1@beforetrue\endcsname}{}%
+    \AtBeginDocument{%
+        \@ifpackageloaded{#1}{%
+            \csname ifFL@#1@before\endcsname\else
+            \FL@warn{This package should be loaded after #1}%
+        \fi
     }{}}}
-\FL@checkbefore{hyperref}
-\appto{\captionslatvian}{%
-  \renewcommand{\alsoname}{sk.~arī}%
-  \renewcommand{\chaptername}{nodaļa}%
-  \renewcommand{\figurename}{att.}%
-  \renewcommand{\indexname}{Rādītājs}%
-  \renewcommand{\partname}{daļa}%
-  \renewcommand{\tablename}{tabula}%
-  \renewcommand{\seename}{sk.\@}%
-  \def\glossaryname{Glosārijs}%
-}
-\renewcommand{\@alph}[1]{%
-  \ifcase #1\or a\or b\or c\or d\or e\or f\or g\or h\or i\or j\or k\or l%
-  \or m\or n\or o\or p\or r\or s\or t\or u\or v\or z\else\@ctrerr\fi}
+    \FL@checkbefore{hyperref}
+    \appto{\captionslatvian}{%
+        \renewcommand{\alsoname}{sk.~arī}%
+        \renewcommand{\chaptername}{nodaļa}%
+        \renewcommand{\figurename}{att.}%
+        \renewcommand{\indexname}{Rādītājs}%
+        \renewcommand{\partname}{daļa}%
+        \renewcommand{\tablename}{tabula}%
+        \renewcommand{\seename}{sk.\@}%
+        \def\glossaryname{Glosārijs}%
+    }
+    \renewcommand{\@alph}[1]{%
+        \ifcase #1\or a\or b\or c\or d\or e\or f\or g\or h\or i\or j\or k\or l%
+\or m\or n\or o\or p\or r\or s\or t\or u\or v\or z\else\@ctrerr\fi}
 \renewcommand{\@Alph}[1]{%
-  \ifcase #1\or A\or B\or C\or D\or E\or F\or G\or H\or I\or J\or K\or L%
+    \ifcase #1\or A\or B\or C\or D\or E\or F\or G\or H\or I\or J\or K\or L%
   \or M\or N\or O\or P\or R\or S\or T\or U\or V\or Z\else\@ctrerr\fi}
-\frenchspacing
-\newcommand{\FL@p}{.\@\nobreak}
-\newcommand{\FL@digits}{0123456789}
-\newcommand{\FL@alnum}{%
-  ABCDEFGHIJKLMNOPQRSTUVWXYZ%
-  abcdefghijklmnopqrstuvwxyz%
+  \frenchspacing
+  \newcommand{\FL@p}{.\@\nobreak}
+  \newcommand{\FL@digits}{0123456789}
+  \newcommand{\FL@alnum}{%
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ%
+      abcdefghijklmnopqrstuvwxyz%
   0123456789}
-\newcommand{\FL@iflastinset}[4]{%
-  \StrRight{#1}{1}[\@tempa]%
+  \newcommand{\FL@iflastinset}[4]{%
+      \StrRight{#1}{1}[\@tempa]%
   \IfSubStr{#2}{\@tempa}{#3}{#4}}
-\let\FL@old@numberline=\numberline
-\renewcommand{\numberline}[1]{%
-  \FL@iflastinset{#1}{\FL@alnum}{%
-    \FL@old@numberline{#1\FL@p}%
-  }{%
-    \FL@old@numberline{#1}%
+  \let\FL@old@numberline=\numberline
+  \renewcommand{\numberline}[1]{%
+      \FL@iflastinset{#1}{\FL@alnum}{%
+          \FL@old@numberline{#1\FL@p}%
+          }{%
+          \FL@old@numberline{#1}%
   }}
-\AtBeginDocument{%
-  \let\nref=\ref
-  \let\npageref=\pageref
-}
-\newcommand{\FL@maybep}[2]{%
-  \@ifundefined{r@#2}{}{%
-    \FL@iflastinset{\expandafter\expandafter\expandafter #1%
-      \csname r@#2\endcsname}{\FL@digits}{\FL@p}{}%
+  \AtBeginDocument{%
+      \let\nref=\ref
+      \let\npageref=\pageref
+  }
+  \newcommand{\FL@maybep}[2]{%
+      \@ifundefined{r@#2}{}{%
+          \FL@iflastinset{\expandafter\expandafter\expandafter #1%
+          \csname r@#2\endcsname}{\FL@digits}{\FL@p}{}%
   }}
-\AtBeginDocument{%
-  \@ifpackageloaded{hyperref}{%
-    \newcommand{\FL@ref@star}[1]{\nref*{#1}\FL@maybep{\@firstoffive}{#1}}%
-    \newcommand{\FL@ref}[1]{\hyperref[#1]{\FL@ref@star{#1}}\nobreak}%
-    \renewcommand{\ref}{\@ifstar{\FL@ref@star}{\FL@ref}}%
-    \newcommand{\FL@pageref@star}[1]{%
-      \npageref*{#1}\FL@maybep{\@secondoffive}{#1}}%
-    \newcommand{\FL@pageref}[1]{%
-      \hyperref[#1]{\FL@pageref@star{#1}}\nobreak}%
-    \renewcommand{\pageref}{\@ifstar{\FL@pageref@star}{\FL@pageref}}%
-  }{%
-    \renewcommand{\ref}[1]{\nref{#1}\FL@maybep{\@firstoftwo}{#1}}%
-    \renewcommand{\pageref}[1]{%
-      \npageref{#1}\FL@maybep{\@secondoftwo}{#1}}%
-  }%
-  \robustify{\ref}%
-  \robustify{\pageref}%
-}
-\newcommand{\FL@secspace}{\hspace{0.66667em}}
-\FL@patch{\@seccntformat}{\quad}{\FL@p\FL@secspace}
-\FL@patch{\@makechapterhead}{\@chapapp\space\thechapter}{%
-  \ifx\@chapapp\appendixname
-    \@chapapp\space\thechapter
-  \else
-    \thechapter\FL@p\space\@chapapp
-  \fi
-}
-\expandafter\FL@patch
+  \AtBeginDocument{%
+      \@ifpackageloaded{hyperref}{%
+          \newcommand{\FL@ref@star}[1]{\nref*{#1}\FL@maybep{\@firstoffive}{#1}}%
+          \newcommand{\FL@ref}[1]{\hyperref[#1]{\FL@ref@star{#1}}\nobreak}%
+          \renewcommand{\ref}{\@ifstar{\FL@ref@star}{\FL@ref}}%
+          \newcommand{\FL@pageref@star}[1]{%
+          \npageref*{#1}\FL@maybep{\@secondoffive}{#1}}%
+          \newcommand{\FL@pageref}[1]{%
+          \hyperref[#1]{\FL@pageref@star{#1}}\nobreak}%
+          \renewcommand{\pageref}{\@ifstar{\FL@pageref@star}{\FL@pageref}}%
+          }{%
+          \renewcommand{\ref}[1]{\nref{#1}\FL@maybep{\@firstoftwo}{#1}}%
+          \renewcommand{\pageref}[1]{%
+          \npageref{#1}\FL@maybep{\@secondoftwo}{#1}}%
+      }%
+      \robustify{\ref}%
+      \robustify{\pageref}%
+  }
+  \newcommand{\FL@secspace}{\hspace{0.66667em}}
+  \FL@patch{\@seccntformat}{\quad}{\FL@p\FL@secspace}
+  \FL@patch{\@makechapterhead}{\@chapapp\space\thechapter}{%
+      \ifx\@chapapp\appendixname
+          \@chapapp\space\thechapter
+      \else
+          \thechapter\FL@p\space\@chapapp
+      \fi
+  }
+  \expandafter\FL@patch
   \csname\@ifpackageloaded{hyperref}{H@old@part}{@part}\endcsname
   {\partname\nobreakspace\thepart}{\thepart\FixL@p\space\partname}
-\@ifundefined{thepart}{}{\renewcommand{\thepart}{\arabic{part}}}
-\FL@patch{\ps@headings}{\@chapapp\ \thechapter}{%
+  \@ifundefined{thepart}{}{\renewcommand{\thepart}{\arabic{part}}}
+  \FL@patch{\ps@headings}{\@chapapp\ \thechapter}{%
   \thechapter\FL@p\space\@chapapp}
-\FL@patch{\ps@headings}{\thesection\quad}{%
+  \FL@patch{\ps@headings}{\thesection\quad}{%
   \thesection\FL@p\FL@secspace}
-\FL@patch{\ps@headings}{\thesubsection\quad}{%
+  \FL@patch{\ps@headings}{\thesubsection\quad}{%
   \thesubsection\FL@p\FL@secspace}
-\DeclareCaptionLabelFormat{latvian}{#2\FL@p\space #1}
-\captionsetup{labelformat=latvian,labelsep=period}
-\captionsetup[figure]{labelsep=space}
-\newcommand{\FL@thmnumber}[1]{#1\FL@p}
-\begingroup
+  \DeclareCaptionLabelFormat{latvian}{#2\FL@p\space #1}
+  \captionsetup{labelformat=latvian,labelsep=period}
+  \captionsetup[figure]{labelsep=space}
+  \newcommand{\FL@thmnumber}[1]{#1\FL@p}
+  \begingroup
   \@makeother{\#} % Hack
   \AtBeginDocument{%
-    \@ifpackageloaded{amsthm}{%
-      \swapnumbers
-      \FL@patch{\@begintheorem}{\thmnumber\@iden}{\thmnumber\FL@thmnumber}%
-    }{%
-      \FL@patch{\@begintheorem}{#1\ #2}{#2\FL@p\space #1}%
-      \expandafter\FL@patch\csname\@ifpackageloaded{nameref}%
-        {NRorg@opargbegintheorem}{@opargbegintheorem}\endcsname
-        {#1\ #2}{#2\FL@p\space #1}%
-    }}
-\endgroup
-\DeclareMathOperator{\tg}{tg}
-\DeclareMathOperator{\ctg}{ctg}
-\DeclareMathOperator{\cosec}{cosec}
-\DeclareMathOperator{\arctg}{arctg}
-\DeclareMathOperator{\arcctg}{arcctg}
-\DeclareMathOperator{\arccosec}{arccosec}
-\let\gcd=\@undefined
-\DeclareMathOperator{\gcd}{LKD}
-\DeclareMathOperator{\lcm}{MKD}
-\let\lkd=\gcd
-\let\mkd=\lcm
-\ifFL@opt@slanteq
-  \let\leq=\leqslant
-  \let\geq=\geqslant
-  \let\le=\leqslant
-  \let\ge=\geqslant
-\fi
-\DeclareRobustCommand{\divby}{\mathrel{\vbox{\upshape\mdseries
+      \@ifpackageloaded{amsthm}{%
+          \swapnumbers
+          \FL@patch{\@begintheorem}{\thmnumber\@iden}{\thmnumber\FL@thmnumber}%
+          }{%
+          \FL@patch{\@begintheorem}{#1\ #2}{#2\FL@p\space #1}%
+          \expandafter\FL@patch\csname\@ifpackageloaded{nameref}%
+          {NRorg@opargbegintheorem}{@opargbegintheorem}\endcsname
+          {#1\ #2}{#2\FL@p\space #1}%
+  }}
+  \endgroup
+  \DeclareMathOperator{\tg}{tg}
+  \DeclareMathOperator{\ctg}{ctg}
+  \DeclareMathOperator{\cosec}{cosec}
+  \DeclareMathOperator{\arctg}{arctg}
+  \DeclareMathOperator{\arcctg}{arcctg}
+  \DeclareMathOperator{\arccosec}{arccosec}
+  \let\gcd=\@undefined
+  \DeclareMathOperator{\gcd}{LKD}
+  \DeclareMathOperator{\lcm}{MKD}
+  \let\lkd=\gcd
+  \let\mkd=\lcm
+  \ifFL@opt@slanteq
+      \let\leq=\leqslant
+      \let\geq=\geqslant
+      \let\le=\leqslant
+      \let\ge=\geqslant
+  \fi
+  \DeclareRobustCommand{\divby}{\mathrel{\vbox{\upshape\mdseries
   \baselineskip 0.65ex\lineskiplimit 0pt\hbox{.}\hbox{.}\hbox{.}}}}
-\MakePerPage{footnote}
-\newcommand{\FL@inpkg}[2]{\AtBeginDocument{\@ifpackageloaded{#1}{#2}{}}}
-\FL@inpkg{float}{%
-  \captionsetup[ruled]{labelformat=latvian}%
-  \renewcommand{\floatname}[2]{\@namedef{#1name}{#2}}%
-}
-\FL@inpkg{algorithm}{%
-  \renewcommand{\listalgorithmname}{Algoritmu saraksts}%
-  \floatname{algorithm}{algoritms}%
-}
-\FL@inpkg{amsmath}{\FL@patch{\eqref}{\ref}{\nref}}
-\FL@inpkg{amsthm}{\renewcommand{\proofname}{Pierādījums}}
-\FL@inpkg{appendix}{%
-  \renewcommand{\appendixpagename}{Pielikumi}%
-  \renewcommand{\appendixtocname}{Pielikumi}%
-}
-\FL@inpkg{doc}{%
-  \renewcommand{\generalname}{Vispārīgi}%
-  \renewcommand{\glossaryname}{Izmaiņu saraksts}%
-  \GlossaryPrologue{%
-    \section*{\glossaryname}%
-    \markboth{\glossaryname}{\glossaryname}%
+  \MakePerPage{footnote}
+  \newcommand{\FL@inpkg}[2]{\AtBeginDocument{\@ifpackageloaded{#1}{#2}{}}}
+  \FL@inpkg{float}{%
+      \captionsetup[ruled]{labelformat=latvian}%
+      \renewcommand{\floatname}[2]{\@namedef{#1name}{#2}}%
   }
-  \IndexPrologue{%
-    \section*{\indexname}%
-    \markboth{\indexname}{\indexname}%
-    Numuri kursīvā apzīmē lappusi, kurā aprakstīta attiecīgā komanda;
-    pasvītrotie numuri norāda uz komandas \ifcodeline@index definīcijas
-    pirmkoda rindu\else definīciju\fi; numuri parastajā rakstā apzīmē
-    \ifcodeline@index pirmkoda rindu\else lappusi\fi, kurā komanda tiek
-    izmantota.%
+  \FL@inpkg{algorithm}{%
+      \renewcommand{\listalgorithmname}{Algoritmu saraksts}%
+      \floatname{algorithm}{algoritms}%
+  }
+  \FL@inpkg{amsmath}{\FL@patch{\eqref}{\ref}{\nref}}
+  \FL@inpkg{amsthm}{\renewcommand{\proofname}{Pierādījums}}
+  \FL@inpkg{appendix}{%
+      \renewcommand{\appendixpagename}{Pielikumi}%
+      \renewcommand{\appendixtocname}{Pielikumi}%
+  }
+  \FL@inpkg{doc}{%
+      \renewcommand{\generalname}{Vispārīgi}%
+      \renewcommand{\glossaryname}{Izmaiņu saraksts}%
+      \GlossaryPrologue{%
+          \section*{\glossaryname}%
+          \markboth{\glossaryname}{\glossaryname}%
+      }
+      \IndexPrologue{%
+          \section*{\indexname}%
+          \markboth{\indexname}{\indexname}%
+          Numuri kursīvā apzīmē lappusi, kurā aprakstīta attiecīgā komanda;
+          pasvītrotie numuri norāda uz komandas \ifcodeline@index definīcijas
+      pirmkoda rindu\else definīciju\fi; numuri parastajā rakstā apzīmē
+  \ifcodeline@index pirmkoda rindu\else lappusi\fi, kurā komanda tiek
+      izmantota.%
   }%
 }
 \FL@inpkg{hyperref}{\renewcommand{\Hy@numberline}[1]{#1. }}
 \@ifpackageloaded{hyperref}{\hypersetup{pdflang=lv}}{}
 \FL@inpkg{listings}{%
-  \renewcommand{\lstlistlistingname}{Pirmkoda tekstu saraksts}%
-  \renewcommand{\lstlistingname}{pirmkods}%
+    \renewcommand{\lstlistlistingname}{Pirmkoda fragmentu saraksts}%
+    \renewcommand{\lstlistingname}{pirmkoda fragments}
 }
 \endinput
 %%

@@ -13,15 +13,15 @@
 \RequirePackage{hyperref}
 % Split content in multiple columns
 \RequirePackage{multicol}
-% Draw plots (requires tikz package)
+% Diagrams / plots
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
 \RequirePackage{pgfplots}
 % Syntax highlighting for code snippets
 \RequirePackage[outputdir=build]{minted}
 \RequirePackage{listings}
 
-
 % Tikz {{{
-
 \RequirePackage{environ}
 \makeatletter
 \newsavebox{\measure@tikzpicture}
@@ -37,9 +37,6 @@
 \makeatother
 
 % \PassOptionsToPackage{svgnames}{xcolor}
-\RequirePackage{xcolor}
-\RequirePackage{tikz}
-\RequirePackage{pgfplots}
 \usetikzlibrary{matrix,positioning,external}
 \usepgfplotslibrary{external}
 \tikzexternalize[

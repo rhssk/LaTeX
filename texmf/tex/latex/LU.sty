@@ -6,34 +6,37 @@
 % https://github.com/andreyv/fixlatvian
 \RequirePackage{fixlatvian}
 
-% Language and font
+% {{{ Language and font
 \RequirePackage{fontspec}
-\RequirePackage{polyglossia}
 
-% page geometry and line spacing {{{
+\setmainlanguage{latvian}
+\setotherlanguage{english}
+% }}}
+% Page geometry and line spacing {{{
 \RequirePackage[left=30mm,top=20mm,right=20mm,bottom=20mm]{geometry}
 \RequirePackage{setspace}
 \onehalfspacing{}
+
+\setlength{\parindent}{1cm}
 % }}}
-% caption {{{
-\RequirePackage{caption}
+% Captions {{{
 \captionsetup{
-	font=small,
-	labelfont=it,
-	textfont=bf
+    font=small,
+    labelfont=it,
+    textfont=bf
 }
 \DeclareCaptionFormat{label_newline_center_text}{#1#2\\\centering#3}
 \captionsetup[table]{
-	format=label_newline_center_text,
-	labelsep=none,
-	singlelinecheck=false,
-	justification=raggedleft
+    format=label_newline_center_text,
+    labelsep=none,
+    singlelinecheck=false,
+    justification=raggedleft
 }
 \captionsetup[figure]{
-	format=hang,
+    format=hang,
 }
 % }}}
-% Tabke of contents {{{
+% Table of contents {{{
 \RequirePackage{tocloft}
 % Dotted lines between section names and page numbers
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
@@ -69,7 +72,7 @@ language=latvian
 ]{biblatex}
 
 \DefineBibliographyStrings{latvian}{
-	url = [Tiešsaiste]\adddot\addspace Pieejams ,
+    url = [Tiešsaiste]\adddot\addspace Pieejams ,
 }
 
 % Override \uspunctuation set by biblatex-ieee
