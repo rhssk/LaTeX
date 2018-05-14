@@ -18,7 +18,9 @@
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
 % Syntax highlighting for code snippets
-\RequirePackage[outputdir=build]{minted}
+% ouputdir is a bit weird since it's a bodge in order to get tikzexternalize working later on
+% without having to manually create './build/build'
+\RequirePackage[outputdir=./build/build]{minted}
 \RequirePackage{listings}
 
 % Tikz {{{
@@ -40,7 +42,7 @@
 \usetikzlibrary{matrix,positioning,external}
 \usepgfplotslibrary{external}
 \tikzexternalize[
-prefix=build/, % tikz will expect an existing 'build' folder in your build folder (./build/build)
+prefix=build/,
 up to date check=diff
 ]
 
