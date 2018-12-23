@@ -8,6 +8,7 @@
 
 % {{{ Language and font
 \RequirePackage{fontspec}
+\RequirePackage{polyglossia}
 
 \setmainlanguage{latvian}
 \setotherlanguage{english}
@@ -17,23 +18,38 @@
 \RequirePackage{setspace}
 \onehalfspacing{}
 
+\RequirePackage{indentfirst}
+
 \setlength{\parindent}{1cm}
 % }}}
 % Captions {{{
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+
 \captionsetup{
     font=small,
     labelfont=it,
     textfont=bf
 }
+
+% Table
 \DeclareCaptionFormat{label_newline_center_text}{#1#2\\\centering#3}
 \captionsetup[table]{
     format=label_newline_center_text,
     labelsep=none,
     singlelinecheck=false,
-    justification=raggedleft
+    justification=raggedleft,
 }
+
+% Figure
 \captionsetup[figure]{
     format=hang,
+}
+
+% Subcaptions
+\captionsetup[sub]{
+    labelformat=brace,
+    labelsep=space,
 }
 % }}}
 % Table of contents {{{
@@ -67,8 +83,8 @@
 % biblatex {{{
 \RequirePackage[
 backend=biber,
+% abbreviate=false,
 style=ieee, % Can be acquired from https://github.com/josephwright/biblatex-ieee
-language=latvian
 ]{biblatex}
 
 \DefineBibliographyStrings{latvian}{
@@ -112,16 +128,18 @@ language=latvian
 
 % }}}
 % Glossary {{{
-\RequirePackage[nonumberlist, toc]{glossaries}
+\RequirePackage{hyperref}
+\RequirePackage[nonumberlist, toc, acronym]{glossaries}
+\glsenablehyper
 \makeglossaries
 \renewcommand{\glsnamefont}[1]{\textbf{#1} ---}
 % }}}
 % Misc {{{
 % Prepend section/subsection number to tables and figures
-\numberwithin{table}{section}
-\numberwithin{table}{subsection}
-\numberwithin{figure}{section}
-\numberwithin{figure}{subsection}
+% \numberwithin{table}{section}
+% \numberwithin{table}{subsection}
+% \numberwithin{figure}{section}
+% \numberwithin{figure}{subsection}
 % }}}
 \endinput
 
