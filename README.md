@@ -5,10 +5,9 @@ language and English as the secondary.
 ## Dependencies
 * Properly configured XeLaTeX environment. On Arch Linux `texlive-core`, `texlive-bin` and `biber` should be sufficient.
   Haven't tested it but `texlive-latexextra` and `texlive-bibtexextra` might be required as well.
-* [fixlatvian](https://github.com/andreyv/fixlatvian) package by Andrey Vihrov. Provides punctuation rules for sections
-  etc.
 * [biblatex-ieee](https://github.com/josephwright/biblatex-ieee) package.
-* Drop the [tikzit.sty](https://github.com/tikzit/tikzit/blob/master/tex/sample/tikzit.sty) file in the tikzit folder.
+* [fixlatvian.sty](https://github.com/andreyv/fixlatvian).
+* [tikzit.sty](https://github.com/tikzit/tikzit/blob/master/tex/sample/tikzit.sty) package.
 
 ## Installation
 On Linux systems just drop the `texmf` folder in you home folder. You might be required to run `texhash`
