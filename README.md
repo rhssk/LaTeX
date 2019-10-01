@@ -5,9 +5,9 @@ language and English as the secondary.
 ## Dependencies
 * Properly configured XeLaTeX environment. On Arch Linux `texlive-core`, `texlive-bin` and `biber` should be sufficient.
   Haven't tested it but `texlive-latexextra` and `texlive-bibtexextra` might be required as well.
-* [biblatex-ieee](https://github.com/josephwright/biblatex-ieee) package.
+* [biblatex-ieee](https://github.com/josephwright/biblatex-ieee).
 * [fixlatvian.sty](https://github.com/andreyv/fixlatvian).
-* [tikzit.sty](https://github.com/tikzit/tikzit/blob/master/tex/sample/tikzit.sty) package.
+* [tikzit.sty](https://github.com/tikzit/tikzit/blob/master/tex/sample/tikzit.sty).
 
 ## Installation
 On Linux systems just drop the `texmf` folder in you home folder. You might be required to run `texhash`
