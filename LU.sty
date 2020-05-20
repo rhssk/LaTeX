@@ -9,6 +9,7 @@
 % {{{ Language and font
 \RequirePackage{fontspec}
 \RequirePackage{polyglossia}
+\PolyglossiaSetup{latvian}{indentfirst=true}
 
 \setmainlanguage{latvian}
 \setotherlanguage{english}
@@ -17,9 +18,6 @@
 \RequirePackage[left=30mm,top=20mm,right=20mm,bottom=20mm]{geometry}
 \RequirePackage{setspace}
 \onehalfspacing{}
-
-\RequirePackage{indentfirst}
-
 \setlength{\parindent}{1cm}
 % }}}
 % Captions {{{
@@ -142,5 +140,3 @@ style=ieee, % Can be acquired from https://github.com/josephwright/biblatex-ieee
 \numberwithin{figure}{subsection}
 % }}}
 \endinput
-
-% vim:foldmethod=marker:foldlevel=0
