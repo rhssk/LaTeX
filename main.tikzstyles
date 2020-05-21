@@ -8,9 +8,12 @@
 \tikzstyle{blue dot}=[fill=blue, shape=circle, tikzit category=nodes, draw=black]
 \tikzstyle{green dot}=[fill=green, tikzit category=nodes, shape=circle]
 \tikzstyle{yellow square}=[draw=black, fill=yellow, shape=rectangle, tikzit category=nodes]
+\tikzstyle{blue node 2}=[fill={rgb,255: red,128; green,0; blue,128}, draw=black, shape=circle, tikzit fill=blue]
 \tikzstyle{white circle}=[shape=circle, tikzit category=nodes, draw=black]
 \tikzstyle{yellow dot}=[fill=yellow, draw=black, shape=circle, tikzit category=nodes]
+\tikzstyle{red text}=[tikzit category=nodes, text=red]
 
 % Edge styles
 \tikzstyle{dashed edge}=[<->, dashed]
 \tikzstyle{blue pointer}=[->, draw=blue]
+\tikzstyle{dashed gray arrow}=[->, dashed, draw={rgb,255: red,191; green,191; blue,191}]
